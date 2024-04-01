@@ -4,17 +4,17 @@ import window from '@ohos.window';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate被调用了，UIAbility被创建了');
   }
 
   onDestroy() {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy，UIAbility被销毁了');
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate，UIAbility中的页面被加载');
+    // 入口页面
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
@@ -26,16 +26,16 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageDestroy() {
     // Main window is destroyed, release UI related resources
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy UIAbility 界面被销毁');
   }
 
   onForeground() {
     // Ability has brought to foreground
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground UIAbility在前台');
   }
 
   onBackground() {
     // Ability has back to background
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground UIAbility在后台');
   }
 }
