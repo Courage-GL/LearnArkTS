@@ -1,4 +1,4 @@
-import AppContext from '@ohos.app.ability.common'
+ import AppContext from '@ohos.app.ability.common'
 // 自定义标题组件
 @Component
 export struct FruitTitle {
@@ -11,15 +11,15 @@ export struct FruitTitle {
       Row() {
         Image($r('app.media.back')).onClick(() => {
           //退出App
-          let context = getContext() as AppContext.UIAbilityContext
+          let context = getContext(this) as AppContext.UIAbilityContext
           // 关闭当前组件
           context.terminateSelf()
-        }).width(21)
+        }).width(40)
           .height(21)
-          .margin({ right: 20 })
+          .margin({ right: 10 })
         Text(this.title)
           .fontWeight(FontWeight.Bold)
-          .fontSize(30)
+          .fontSize('22.00fp')
           .fontColor(Color.Black)
       }
       .height('100%')
