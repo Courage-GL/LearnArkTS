@@ -1,9 +1,9 @@
 /**
  * 首页
  */
-@Entry
+// @Entry
 @Component
-struct HomePage {
+export default struct HomePage {
   private swiperController: SwiperController = new SwiperController()
 
   build() {
@@ -76,6 +76,8 @@ struct HomePage {
       }
     }
     .height('100%')
+    // 设置不显示拖动条
+    .scrollBar(BarState.Off)
   }
 
   /**

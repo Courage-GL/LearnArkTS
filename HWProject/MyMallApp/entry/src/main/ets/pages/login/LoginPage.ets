@@ -145,7 +145,7 @@ struct LoginPage {
           this.timeOutId = -1
           prompt.showToast({ message: '登录成功！页面即将跳转。' })
           router.pushUrl({
-            url: 'pages/mine/MyPage'
+            url: 'pages/Index/Index'
           })
         }, 2000)
       }

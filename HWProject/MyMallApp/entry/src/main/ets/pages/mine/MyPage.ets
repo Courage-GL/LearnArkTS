@@ -3,9 +3,9 @@
  */
 import router from '@ohos.router'
 
-@Entry
+// @Entry
 @Component
-struct MyPage {
+export default  struct MyPage {
   @State totalData: Array<ItemData> = [
     new ItemData($r('app.media.ic_favorite'), '数据管理'),
     new ItemData($r('app.media.ic_menu'), '菜单设置'),
@@ -63,6 +63,7 @@ struct MyPage {
       }
 
     }
+    .scrollBar(BarState.Off)
   }
 }
 
