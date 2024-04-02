@@ -27,7 +27,7 @@ struct HomePage {
             GridItem() {
               Column() {
                 Image(recommendItem.icon).height(40).width(40)
-                Text(recommendItem.content).fontSize(12).fontColor(Color.Black).fontWeight(400)
+                Text(recommendItem.content).fontSize(12).fontColor(Color.Black).fontWeight(400).margin({ top: 10 })
               }
             }
           })
@@ -49,7 +49,7 @@ struct HomePage {
             GridItem() {
               Column() {
                 Text(channelItemData.title).fontSize(20).fontWeight(400).fontColor(Color.Black)
-                Text(channelItemData.introduce).fontSize(14).fontWeight(200).fontColor(Color.Gray)
+                Text(channelItemData.introduce).fontSize(14).fontWeight(200).fontColor(Color.Black)
               }
               .alignItems(HorizontalAlign.Start)
               .margin({ left: 12, top: 14 })
