@@ -1,4 +1,3 @@
-
 export class CommonConstants {
   static readonly RDB_NAME: string = 'HealthyLife.db'; // db name
 
@@ -124,4 +123,5 @@ export class CommonConstants {
 
   static readonly PREF_KEY = "USER_PRIVACY_KEY"
 
+  static readonly SELECTED_DATE = "SELECTED_DATE"
 }
