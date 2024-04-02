@@ -1,6 +1,8 @@
 import { CommonConstants } from '../../common/constants/CommonConstants'
 import DateUtil from '../../common/utils/DateUtil'
+import CalorieStats from './CalorieStats'
 import  {DatePickDialog } from './DatePickDialog'
+import NutrientStats from './NutrientStats'
 
 @Preview
 @Component
@@ -27,6 +29,17 @@ export struct StatsCard {
         this.controller.open()
       })
       // 2.统计信息
+      Swiper(){
+        // 1.热量
+        CalorieStats()
+        // 2.营养素
+        NutrientStats()
+
+      }
+      .width(CommonConstants.THOUSANDTH_1000)
+      .backgroundColor(Color.White)
+      .borderRadius(CommonConstants.DEFAULT_20)
+      .indicatorStyle({selectedColor:$r('app.color.primary_color')})
 
     }
     .width(CommonConstants.THOUSANDTH_940)
