@@ -1,6 +1,7 @@
 {
   "src": [
     "pages/login/LoginPage",
-    "pages/mine/MyPage"
+    "pages/mine/MyPage",
+    "pages/home/HomePage"
   ]
 }
