@@ -40,7 +40,7 @@ export default struct RecordList {
                   .margin({
                     top: 10
                   })
-                }
+                }.swipeAction({ end: this.deleteButton.bind(this) })
               })
             }
           }
@@ -57,6 +57,17 @@ export default struct RecordList {
       top: 10
     })
 
+  }
+
+  @Builder deleteButton() {
+    Text("删除")
+      .fontSize(20)
+      .fontColor(Color.White)
+      .margin(CommonConstants.SPACE_6)
+      .backgroundColor(Color.Red)
+      .borderRadius(12)
+      .height('100%')
+      .padding({ left: 10, right: 10, top: 4, bottom: 4 })
   }
 }
 
