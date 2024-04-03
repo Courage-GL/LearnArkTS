@@ -12,6 +12,8 @@ struct ItemPage {
       this.headerBar(this.topBarRightText)
       // 2.列表
      ItemList()
+      // 3.底部弹出面板
+      Panel(true)
     }
     .width(CommonConstants.THOUSANDTH_1000)
     .height(CommonConstants.THOUSANDTH_1000)
