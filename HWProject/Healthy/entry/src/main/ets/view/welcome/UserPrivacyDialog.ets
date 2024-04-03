@@ -41,7 +41,7 @@ export default struct UserPrivacyDialog {
           })
       }
     }
-    .width('100%')
+    .width(CommonConstants.THOUSANDTH_1000)
     .padding(10)
   }
 }

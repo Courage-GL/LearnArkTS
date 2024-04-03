@@ -1,3 +1,4 @@
+import { CommonConstants } from '../common/constants/CommonConstants'
 import { RecordPage } from './RecordPage'
 @Entry
 @Component
@@ -20,8 +21,8 @@ struct Index {
     }.onChange((index) => {
       this.currentIndex = index
     })
-    .width('100%')
-    .height('100%')
+    .width(CommonConstants.THOUSANDTH_1000)
+    .height(CommonConstants.THOUSANDTH_1000)
   }
 
   @Builder TabBuilder(title: Resource, normalIcon: Resource, index: number) {

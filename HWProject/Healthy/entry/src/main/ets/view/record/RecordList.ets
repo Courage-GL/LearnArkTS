@@ -21,7 +21,7 @@ export default struct RecordList {
               Text('千卡').grayText()
               Image($r('app.media.ic_public_add_norm_filled')).width(24).fillColor($r('app.color.primary_color'))
             }
-            .width('100%')
+            .width(CommonConstants.THOUSANDTH_1000)
             // 2.组内记录类表
             List() {
               ForEach([1, 2, 3, 4, 5], (item) => {
@@ -36,7 +36,7 @@ export default struct RecordList {
                     Blank()
                     Text('91千卡').grayText()
                   }
-                  .width('100%')
+                  .width(CommonConstants.THOUSANDTH_1000)
                   .margin({
                     top: 10
                   })
@@ -44,7 +44,7 @@ export default struct RecordList {
               })
             }
           }
-          .width('100%')
+          .width(CommonConstants.THOUSANDTH_1000)
           .backgroundColor(Color.White)
           .borderRadius(CommonConstants.DEFAULT_20)
           .padding(CommonConstants.DEFAULT_12)
@@ -52,7 +52,7 @@ export default struct RecordList {
       })
     }
     .width(CommonConstants.THOUSANDTH_940)
-    .height('100%')
+    .height(CommonConstants.THOUSANDTH_1000)
     .margin({
       top: 10
     })
@@ -66,7 +66,7 @@ export default struct RecordList {
       .margin(CommonConstants.SPACE_6)
       .backgroundColor(Color.Red)
       .borderRadius(12)
-      .height('100%')
+      .height(CommonConstants.THOUSANDTH_1000)
       .padding({ left: 10, right: 10, top: 4, bottom: 4 })
   }
 }

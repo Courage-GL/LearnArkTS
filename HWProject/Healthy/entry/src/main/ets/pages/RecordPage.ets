@@ -1,3 +1,4 @@
+import { CommonConstants } from '../common/constants/CommonConstants'
 import RecordList from '../view/record/RecordList'
 import { SearchHeader } from '../view/record/SearchHeader'
 import { StatsCard } from '../view/record/StatsCard'
@@ -15,8 +16,8 @@ export struct RecordPage {
       RecordList().layoutWeight(1)
 
     }
-    .width('100%')
-    .height('100%')
+    .width(CommonConstants.THOUSANDTH_1000)
+    .height(CommonConstants.THOUSANDTH_1000)
     .backgroundColor($r('app.color.index_page_background'))
   }
 }

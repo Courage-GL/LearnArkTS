@@ -32,7 +32,7 @@ export default struct CalorieStats {
       }
       this.statsBuilder('运动消耗', this.expend, '')
     }
-    .width('100%')
+    .width(CommonConstants.THOUSANDTH_1000)
     .justifyContent(FlexAlign.SpaceBetween)
     .padding(20)
 

@@ -15,7 +15,7 @@ export struct SearchHeader {
       }
 
     }
-    .width('100%')
+    .width(CommonConstants.THOUSANDTH_1000)
     .padding({
       left: 12,
       right: 12

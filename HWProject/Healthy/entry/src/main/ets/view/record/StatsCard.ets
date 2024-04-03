@@ -24,7 +24,7 @@ export struct StatsCard {
       }
       .padding(CommonConstants.THOUSANDTH_12)
       .justifyContent(FlexAlign.Start)
-      .width('100%')
+      .width(CommonConstants.THOUSANDTH_1000)
       .onClick(() => {
         this.controller.open()
       })

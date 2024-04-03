@@ -20,7 +20,7 @@ export default struct NutrientStats {
       this.statsBuilder('脂肪（克）', this.fat, this.fatRecommend, $r('app.color.fat_color'))
 
     }
-    .width('100%')
+    .width(CommonConstants.THOUSANDTH_1000)
     .justifyContent(FlexAlign.SpaceBetween)
     .padding(20)
   }

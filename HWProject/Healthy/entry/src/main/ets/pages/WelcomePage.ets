@@ -81,8 +81,8 @@ struct WelcomePage {
       })
 
     }
-    .width('100%')
-    .height('100%')
+    .width(CommonConstants.THOUSANDTH_1000)
+    .height(CommonConstants.THOUSANDTH_1000)
     .backgroundColor($r('app.color.welcome_page_background'))
   }
 }

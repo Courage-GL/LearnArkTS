@@ -27,8 +27,8 @@ struct Index {
              .onClick(()=>{
              })
            }
-             .width('100%')
+             .width(CommonConstants.THOUSANDTH_1000)
          }
-             .height('100%')
+             .height(CommonConstants.THOUSANDTH_1000)
    }
  }
