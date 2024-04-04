@@ -1,19 +1,26 @@
 import router from '@ohos.router'
 import { CommonConstants } from '../common/constants/CommonConstants'
 import ItemList from '../view/record/ItemList'
+
 @Entry
 @Component
 struct ItemPage {
   @State topBarRightText: string = '早餐'
+  @State showPanel: boolean = false
+  onPanelShow(){
+    this.showPanel = true
+  }
 
   build() {
     Column() {
       // 1.导航条
       this.headerBar(this.topBarRightText)
       // 2.列表
-     ItemList()
+      ItemList(this.onPanelShow.bind(this))
       // 3.底部弹出面板
-      Panel(true)
+      Panel(this.showPanel){
+        Button('关闭').onClick(()=> this.showPanel = false)
+      }
     }
     .width(CommonConstants.THOUSANDTH_1000)
     .height(CommonConstants.THOUSANDTH_1000)
