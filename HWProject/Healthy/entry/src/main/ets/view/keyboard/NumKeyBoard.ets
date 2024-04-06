@@ -27,7 +27,7 @@ export default struct NumberKeyBoard {
       })
     }
     .width(CommonConstants.THOUSANDTH_1000)
-    .height(280)
+    .height(260)
     .backgroundColor($r('app.color.index_page_background'))
     // 三列 1:1:1
     .columnsTemplate('1fr 1fr 1fr')

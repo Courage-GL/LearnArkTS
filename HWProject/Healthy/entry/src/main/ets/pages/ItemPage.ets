@@ -39,8 +39,31 @@ struct ItemPage {
         // 3.3 自定义数字键盘
         // 键盘布局
         NumberKeyBoard({ inputAmount: $amount, lastInputValue: $lastValue })
-        // 3.4 键盘
+        // 3.4 按钮
         // Button('关闭').onClick(() => this.showPanel = false)
+        Row() {
+          Button('取消')
+            .width(120)
+            .backgroundColor($r('app.color.lightest_primary_color'))
+            .type(ButtonType.Normal)
+            .fontColor($r('app.color.light_gray'))
+            .borderRadius(6)
+            .onClick(() => {
+              this.showPanel = false
+            })
+          // 同意
+          Button('提交')
+            .width(120)
+            .type(ButtonType.Normal)
+            .backgroundColor($r('app.color.primary_color'))
+            .borderRadius(6)
+            .onClick(() => {
+              this.showPanel = false
+            })
+        }
+        .width('100%')
+        .backgroundColor($r('app.color.index_page_background'))
+        .justifyContent(FlexAlign.SpaceEvenly)
       }
       // 默认展示全屏
       .mode(PanelMode.Full)
