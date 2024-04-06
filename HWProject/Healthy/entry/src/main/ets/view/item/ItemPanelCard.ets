@@ -1,6 +1,4 @@
 import { CommonConstants } from '../../common/constants/CommonConstants'
-
-@Preview
 @Component
 export default struct ItemPanelCard {
   @Prop amount: number
@@ -43,7 +41,6 @@ export default struct ItemPanelCard {
       .padding({
         bottom: 20
       })
-
     }
   }
 

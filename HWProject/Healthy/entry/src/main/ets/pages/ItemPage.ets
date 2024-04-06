@@ -2,6 +2,7 @@ import router from '@ohos.router'
 import { CommonConstants } from '../common/constants/CommonConstants'
 import ItemPanelCard from '../view/item/ItemPanelCard'
 import ItemPanelHeader from '../view/item/ItemPanelHeader'
+import NumberKeyBoard from '../view/keyboard/NumKeyBoard'
 import ItemList from '../view/record/ItemList'
 
 @Entry
@@ -10,9 +11,15 @@ struct ItemPage {
   @State topBarRightText: string = '早餐'
   @State showPanel: boolean = false
   @State amount: number = 1
+  // 记录上次输入的值
+  @State lastValue: string = ''
 
   onPanelShow() {
     this.showPanel = true
+    // 每次页面打开的时候
+    // amount需要初始化成1 lastValue需要清空
+    this.amount = 1
+    this.lastValue = ''
   }
 
   build() {
@@ -30,7 +37,8 @@ struct ItemPage {
         // 3.2 食物、运动信息卡片
         ItemPanelCard({ amount: this.amount })
         // 3.3 自定义数字键盘
-
+        // 键盘布局
+        NumberKeyBoard({ inputAmount: $amount, lastInputValue: $lastValue })
         // 3.4 键盘
         // Button('关闭').onClick(() => this.showPanel = false)
       }
