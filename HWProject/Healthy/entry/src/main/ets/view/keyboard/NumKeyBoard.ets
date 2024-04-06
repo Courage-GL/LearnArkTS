@@ -13,12 +13,18 @@ export default struct NumberKeyBoard {
           Text(item).fontWeight(CommonConstants.FONT_WEIGHT_900).fontSize(20)
         }
         .keyBoxStyle()
+        .onClick(() => {
+          this.clickNum(item)
+        })
 
       })
       GridItem() {
         Text("删除").fontWeight(CommonConstants.FONT_WEIGHT_900).fontSize(20)
       }
       .keyBoxStyle()
+      .onClick(() => {
+        this.clickDelete()
+      })
     }
     .width(CommonConstants.THOUSANDTH_1000)
     .height(280)
@@ -34,5 +40,13 @@ export default struct NumberKeyBoard {
     .backgroundColor(Color.White)
     .height(50)
     .borderRadius(CommonConstants.DEFAULT_8)
+  }
+  // 数字点击事件
+  clickNum(num: string) {
+
+  }
+  // 删除按钮点击事件
+  clickDelete() {
+
   }
 }
