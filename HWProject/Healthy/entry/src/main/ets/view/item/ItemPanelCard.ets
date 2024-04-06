@@ -48,7 +48,7 @@ export default struct ItemPanelCard {
     Column({ space: CommonConstants.DEFAULT_6 }) {
       Text(label).fontSize(14)
         .fontColor($r('app.color.light_gray'))
-      Text(value.toFixed(1))
+      Text((this.amount * value).toFixed(1))
         .fontSize(18)
         .fontColor(Color.Black)
         .fontWeight(CommonConstants.FONT_WEIGHT_700)
