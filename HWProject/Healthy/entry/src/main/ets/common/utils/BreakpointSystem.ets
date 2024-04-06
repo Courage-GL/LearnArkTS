@@ -18,7 +18,7 @@ export default class BreakpointSystem {
 
   mdListenerCallback(result: mediaQuery.MediaQueryResult) {
     if (result.matches) {
-      this.updateCurrentBreakpoint(BreakpointConstants.BREAKPOINT_SM)
+      this.updateCurrentBreakpoint(BreakpointConstants.BREAKPOINT_MD)
     }
   }
 
@@ -38,6 +38,7 @@ export default class BreakpointSystem {
     this.mdListener.on('change', this.mdListenerCallback.bind(this))
     this.lgListener.on('change', this.lgListenerCallback.bind(this))
   }
+
   unRegister() {
     this.smListener.off('change', this.smListenerCallback.bind(this))
     this.mdListener.off('change', this.mdListenerCallback.bind(this))

@@ -1,12 +1,15 @@
+import BreakpointType from '../../common/bean/BreakpointType'
+import BreakpointConstants from '../../common/constants/BreakpointConstants'
 import { CommonConstants } from '../../common/constants/CommonConstants'
 import DateUtil from '../../common/utils/DateUtil'
 import CalorieStats from './CalorieStats'
-import  {DatePickDialog } from './DatePickDialog'
+import { DatePickDialog } from './DatePickDialog'
 import NutrientStats from './NutrientStats'
 
 @Preview
 @Component
 export struct StatsCard {
+  @StorageProp('currentBreakpoint') currentBreakpoint: string = BreakpointConstants.BREAKPOINT_SM
   @StorageProp("SELECTED_DATE") currentDate: number = DateUtil.beginTimeOfDay(new Date())
   controller: CustomDialogController = new CustomDialogController({
     builder: DatePickDialog({ selectedDate: new Date(this.currentDate)
@@ -29,17 +32,21 @@ export struct StatsCard {
         this.controller.open()
       })
       // 2.统计信息
-      Swiper(){
+      Swiper() {
         // 1.热量
         CalorieStats()
         // 2.营养素
         NutrientStats()
-
       }
+      .displayCount(new BreakpointType({
+        sm: 1,
+        md: 1,
+        lg: 2
+      }).getValue(this.currentBreakpoint))
       .width(CommonConstants.THOUSANDTH_1000)
       .backgroundColor(Color.White)
       .borderRadius(CommonConstants.DEFAULT_20)
-      .indicatorStyle({selectedColor:$r('app.color.primary_color')})
+      .indicatorStyle({ selectedColor: $r('app.color.primary_color') })
 
     }
     .width(CommonConstants.THOUSANDTH_940)

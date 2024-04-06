@@ -1,12 +1,35 @@
+import BreakpointType from '../common/bean/BreakpointType'
+import BreakpointConstants from '../common/constants/BreakpointConstants'
 import { CommonConstants } from '../common/constants/CommonConstants'
+import BreakpointSystem from '../common/utils/BreakpointSystem'
 import { RecordPage } from './RecordPage'
+
 @Entry
 @Component
 struct Index {
   @State currentIndex: number = 0
+  private breakpointSystem: BreakpointSystem = new BreakpointSystem()
+  @StorageProp('currentBreakpoint') currentBreakpoint: string = BreakpointConstants.BREAKPOINT_SM
+
+  aboutToAppear() {
+    this.breakpointSystem.register()
+  }
+
+  aboutToDisappear() {
+    this.breakpointSystem.unRegister()
+  }
+
+  chooseBarPosition() {
+    // 通过键值队 取消ifelse判断
+    return new BreakpointType({
+      sm: BarPosition.End,
+      md: BarPosition.Start,
+      lg: BarPosition.Start
+    }).getValue(this.currentBreakpoint)
+  }
 
   build() {
-    Tabs({ barPosition: BarPosition.End }) {
+    Tabs({ barPosition: this.chooseBarPosition() }) {
       TabContent() {
         RecordPage()
       }.tabBar(this.TabBuilder($r('app.string.tab_record'), $r('app.media.ic_calendar'), 0))
@@ -23,6 +46,11 @@ struct Index {
     })
     .width(CommonConstants.THOUSANDTH_1000)
     .height(CommonConstants.THOUSANDTH_1000)
+    .vertical(new BreakpointType({
+      sm: false,
+      md: true,
+      lg: true
+    }).getValue(this.currentBreakpoint))
   }
 
   @Builder TabBuilder(title: Resource, normalIcon: Resource, index: number) {
