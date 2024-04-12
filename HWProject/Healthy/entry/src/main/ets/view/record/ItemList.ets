@@ -1,5 +1,6 @@
 import { CommonConstants } from '../../common/constants/CommonConstants'
 import ItemModel from '../../model/ItemModel'
+import GroupInfo from '../../viewmodel/GroupInfo'
 import ItemCategory from '../../viewmodel/ItemCategory'
 import RecordItem from '../../viewmodel/RecordItem'
 
@@ -8,28 +9,6 @@ import RecordItem from '../../viewmodel/RecordItem'
 export default struct ItemList {
   showPanel: () => void
   @State isFood: boolean = true
-  data = [
-    {
-      type: new ItemCategory(0, '主食'),
-      items: []
-    },
-    {
-      type: new ItemCategory(0, '果蔬'),
-      items: []
-    },
-    {
-      type: new ItemCategory(0, '肉蛋奶'),
-      items: []
-    },
-    {
-      type: new ItemCategory(0, '坚果'),
-      items: []
-    },
-    {
-      type: new ItemCategory(0, '其它'),
-      items: []
-    },
-  ]
 
   build() {
     Tabs() {
@@ -38,9 +17,9 @@ export default struct ItemList {
       }
       .tabBar('全部')
 
-      ForEach(this.data, (group) => {
+      ForEach(ItemModel.listItemGroupByCategory(this.isFood), (group: GroupInfo) => {
         TabContent() {
-          this.TabContentBuilder(ItemModel.list(this.isFood))
+          this.TabContentBuilder(group.items)
         }
         .tabBar(group.type.name)
       })
