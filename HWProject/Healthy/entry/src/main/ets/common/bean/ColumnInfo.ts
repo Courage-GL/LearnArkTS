@@ -1,10 +1,10 @@
-export class ColumnInfo{
+export interface ColumnInfo {
   name: string
   columnName: string
   type: ColumnType
 }
 
-export enum ColumnType{
+export enum ColumnType {
   LONG,
   DOUBLE,
   STRING,
