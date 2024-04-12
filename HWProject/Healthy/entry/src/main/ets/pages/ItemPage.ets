@@ -4,6 +4,7 @@ import ItemPanelCard from '../view/item/ItemPanelCard'
 import ItemPanelHeader from '../view/item/ItemPanelHeader'
 import NumberKeyBoard from '../view/keyboard/NumKeyBoard'
 import ItemList from '../view/record/ItemList'
+import RecordItem from '../viewmodel/RecordItem'
 
 @Entry
 @Component
@@ -13,13 +14,15 @@ struct ItemPage {
   @State amount: number = 1
   // 记录上次输入的值
   @State lastValue: string = ''
+  @State item: RecordItem = null
 
-  onPanelShow() {
+  onPanelShow(item: RecordItem) {
     this.showPanel = true
     // 每次页面打开的时候
     // amount需要初始化成1 lastValue需要清空
     this.amount = 1
     this.lastValue = ''
+    this.item = item
   }
 
   build() {
@@ -35,7 +38,8 @@ struct ItemPage {
         // 3.1.头部文本 + 弹窗
         ItemPanelHeader()
         // 3.2 食物、运动信息卡片
-        ItemPanelCard({ amount: this.amount })
+        if (this.item)
+          ItemPanelCard({ amount: this.amount, item: $item })
         // 3.3 自定义数字键盘
         // 键盘布局
         NumberKeyBoard({ inputAmount: $amount, lastInputValue: $lastValue })

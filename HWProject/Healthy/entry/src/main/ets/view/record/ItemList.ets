@@ -7,7 +7,7 @@ import RecordItem from '../../viewmodel/RecordItem'
 @Preview
 @Component
 export default struct ItemList {
-  showPanel: () => void
+  showPanel: (item: RecordItem) => void
   @State isFood: boolean = true
 
   build() {
@@ -17,6 +17,7 @@ export default struct ItemList {
       }
       .tabBar('全部')
 
+
       ForEach(ItemModel.listItemGroupByCategory(this.isFood), (group: GroupInfo) => {
         TabContent() {
           this.TabContentBuilder(group.items)
@@ -24,6 +25,7 @@ export default struct ItemList {
         .tabBar(group.type.name)
       })
     }
+    .barMode(BarMode.Scrollable)
     .width(CommonConstants.THOUSANDTH_940)
     .height(CommonConstants.THOUSANDTH_1000)
   }
@@ -47,7 +49,7 @@ export default struct ItemList {
           .padding(CommonConstants.DEFAULT_6)
         }
         .onClick(() => {
-          this.showPanel()
+          this.showPanel(item)
         })
       })
     }
