@@ -4,9 +4,9 @@ import { CommonConstants } from '../../common/constants/CommonConstants'
 @Component
 export default struct CalorieStats {
   // 饮食摄入
-  intake: number = 200
+  @Prop intake: number
   // 运动消耗
-  expend: number = 0
+  @Prop expend: number
   // 推荐
   recommend: number = CommonConstants.RECOMMEND_CALORIE
   // 还可以吃

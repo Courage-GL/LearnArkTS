@@ -7,11 +7,12 @@ import RecordVO from '../viewmodel/RecordVO'
 import StatsInfo from '../viewmodel/StatsInfo'
 import GroupInfo from '../viewmodel/GroupInfo'
 import RecordType from '../viewmodel/RecordType'
+import { CommonConstants } from '../common/constants/CommonConstants'
 
 
 class RecordService {
   insert(typeId: number, itemId: number, amount: number) {
-    let createTime = (AppStorage.Get('selectedDate') || DateUtil.beginTimeOfDay(new Date())) as number
+    let createTime = (AppStorage.Get(CommonConstants.RECORD_DATE) || DateUtil.beginTimeOfDay(new Date())) as number
     return RecordModel.insert({ typeId, itemId, amount, createTime })
   }
 
@@ -54,7 +55,7 @@ class RecordService {
     }
     records.forEach(record => {
       groups[record.typeId].items.push(record)
-      groups[record.typeId].calorie+= record.calorie
+      groups[record.typeId].calorie += record.calorie
     })
     return groups
   }

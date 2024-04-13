@@ -1,20 +1,24 @@
 import router from '@ohos.router'
 import { CommonConstants } from '../common/constants/CommonConstants'
+import { RecordTypeEnum, RecordTypes } from '../model/RecordTypeModel'
+import RecordService from '../services/RecordService'
 import ItemPanelCard from '../view/item/ItemPanelCard'
 import ItemPanelHeader from '../view/item/ItemPanelHeader'
 import NumberKeyBoard from '../view/keyboard/NumKeyBoard'
 import ItemList from '../view/record/ItemList'
 import RecordItem from '../viewmodel/RecordItem'
+import RecordType from '../viewmodel/RecordType'
 
 @Entry
 @Component
 struct ItemPage {
-  @State topBarRightText: string = '早餐'
   @State showPanel: boolean = false
   @State amount: number = 1
   // 记录上次输入的值
   @State lastValue: string = ''
   @State item: RecordItem = null
+  @State type: RecordType = RecordTypes[0]
+  @State isFood: boolean = true
 
   onPanelShow(item: RecordItem) {
     this.showPanel = true
@@ -25,12 +29,18 @@ struct ItemPage {
     this.item = item
   }
 
+  onPageShow() {
+    let params: any = router.getParams()
+    this.type = params.type
+    this.isFood = this.type.id !== RecordTypeEnum.WORKOUT
+  }
+
   build() {
     Column() {
       // 1.导航条
-      this.headerBar(this.topBarRightText)
+      this.headerBar()
       // 2.列表
-      ItemList({ showPanel: this.onPanelShow.bind(this) })
+      ItemList({ showPanel: this.onPanelShow.bind(this), isFood: this.isFood })
         // 不加这个面板展示不出来
         .layoutWeight(1)
       // 3.底部弹出面板
@@ -62,7 +72,10 @@ struct ItemPage {
             .backgroundColor($r('app.color.primary_color'))
             .borderRadius(6)
             .onClick(() => {
-              this.showPanel = false
+              RecordService.insert(this.type.id,this.item.id,this.amount)
+                .then(()=>{
+                  this.showPanel = false
+                })
             })
         }
         .width('100%')
@@ -81,7 +94,7 @@ struct ItemPage {
     .height(CommonConstants.THOUSANDTH_1000)
   }
 
-  @Builder headerBar(topBarRightText: string) {
+  @Builder headerBar() {
     Row() {
       Image($r('app.media.ic_public_back'))
         .width(24)
@@ -89,7 +102,7 @@ struct ItemPage {
           router.back()
         })
       Blank()
-      Text(topBarRightText)
+      Text(this.type.name)
         .fontWeight(FontWeight.Bold)
         .fontSize(20)
     }

@@ -1,20 +1,34 @@
+import router from '@ohos.router'
 import { CommonConstants } from '../../common/constants/CommonConstants'
+import RecordService from '../../services/RecordService'
+import GroupInfo from '../../viewmodel/GroupInfo'
+import RecordType from '../../viewmodel/RecordType'
+import RecordVO from '../../viewmodel/RecordVO'
 
 @Preview
 @Component
 export default struct RecordList {
+  @Consume
+  @Watch('handleRecordsChange')
+  records: RecordVO[]
+  @State groups: GroupInfo<RecordType, RecordVO>[] = []
+
+  handleRecordsChange() {
+    this.groups = RecordService.calculateGroupInfo(this.records)
+  }
+
   build() {
     List({ space: CommonConstants.SPACE_10 }) {
-      ForEach([1, 2, 3, 4, 5], (item) => {
+      ForEach(this.groups, (item: GroupInfo<RecordType, RecordVO>) => {
         ListItem() {
           Column() {
             // 1.分组的标题
             Row({ space: CommonConstants.SPACE_4 }) {
-              Image($r('app.media.ic_breakfast')).width(24)
-              Text('早餐').fontSize(18).fontWeight(CommonConstants.FONT_WEIGHT_700)
-              Text('建议423-592').grayText()
+              Image(item.type.icon).width(24)
+              Text(item.type.name).fontSize(18).fontWeight(CommonConstants.FONT_WEIGHT_700)
+              Text(`建议${item.type.min}~${item.type.max}千卡`).grayText()
               Blank()
-              Text('190')
+              Text(item.calorie.toFixed(1))
                 .fontSize(14)
                 .fontWeight(CommonConstants.FONT_WEIGHT_700)
                 .fontColor($r('app.color.primary_color'))
@@ -22,19 +36,25 @@ export default struct RecordList {
               Image($r('app.media.ic_public_add_norm_filled')).width(24).fillColor($r('app.color.primary_color'))
             }
             .width(CommonConstants.THOUSANDTH_1000)
+            .onClick(() => {
+              router.pushUrl({
+                url: 'pages/ItemPage',
+                params: { type: item.type }
+              })
+            })
             // 2.组内记录类表
             List() {
-              ForEach([1, 2, 3, 4, 5], (item) => {
+              ForEach(item.items, (record: RecordVO) => {
                 ListItem() {
                   Row({ space: CommonConstants.SPACE_4 }) {
-                    Image($r('app.media.toast')).width(50)
+                    Image(record.recordItem.image).width(50)
                     Column({ space: CommonConstants.DEFAULT_6 }) {
-                      Text('全麦吐司').fontWeight(CommonConstants.FONT_WEIGHT_700)
-                      Text('1片').grayText()
+                      Text(record.recordItem.name).fontWeight(CommonConstants.FONT_WEIGHT_700)
+                      Text(`${record.amount}/${record.recordItem.unit}`).grayText()
                     }
 
                     Blank()
-                    Text('91千卡').grayText()
+                    Text(`${record.calorie}千卡`).grayText()
                   }
                   .width(CommonConstants.THOUSANDTH_1000)
                   .margin({

@@ -4,11 +4,11 @@ import { CommonConstants } from '../../common/constants/CommonConstants'
 @Component
 export default struct NutrientStats {
   // 碳水化合物
-  carbon: number = 10
+  @Prop carbon: number
   // 蛋白质
-  protein: number = 20
+  @Prop protein: number
   // 脂肪
-  fat: number = 30
+  @Prop fat: number
   carbonRecommend = CommonConstants.RECOMMEND_CARBON
   proteinRecommend = CommonConstants.RECOMMEND_PROTEIN
   fatRecommend = CommonConstants.RECOMMEND_FAT
