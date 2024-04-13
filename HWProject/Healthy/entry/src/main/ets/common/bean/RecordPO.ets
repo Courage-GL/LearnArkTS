@@ -1,5 +1,5 @@
 export default class RecordPO {
-  id: number
+  id?: number
   typeId: number
   itemId: number
   amount: number = 0

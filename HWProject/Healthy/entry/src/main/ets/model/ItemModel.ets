@@ -4,6 +4,10 @@ import { FoodCategories, FoodCateGoryEnum, WorkoutCategories, WorkoutCategoryEnu
 
 
 class ItemModel {
+  getById(id: number, isFood = true) {
+    return isFood ? foods[id] : workouts[id]
+  }
+
   list(isFood: boolean = true): RecordItem[] {
     return isFood ? foods : workouts
   }
